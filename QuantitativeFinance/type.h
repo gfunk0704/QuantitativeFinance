@@ -12,6 +12,8 @@ namespace QuantitativeFinance
 	using Integer = std::int32_t;
 	using Natural = std::uint32_t;
 	using Real = double;
+	using Size = std::size_t;
+	using String = std::string;
 
 	template<typename T>
 	using List = std::vector<T>;

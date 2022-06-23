@@ -140,11 +140,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="date.cpp" />
+    <ClCompile Include="nonparametriccurve.cpp" />
+    <ClCompile Include="normaldistribution.cpp" />
     <ClCompile Include="QuantitativeFinance.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="compoundpoissonprocess.h" />
+    <ClInclude Include="constant.h" />
+    <ClInclude Include="distribution.h" />
+    <ClInclude Include="curve.h" />
     <ClInclude Include="date.h" />
+    <ClInclude Include="nonparametriccurve.h" />
+    <ClInclude Include="normaldistribution.h" />
+    <ClInclude Include="parametricmodel.h" />
     <ClInclude Include="period.h" />
+    <ClInclude Include="process.h" />
+    <ClInclude Include="timehomogeneousparameter.h" />
     <ClInclude Include="type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

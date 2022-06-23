@@ -8,6 +8,27 @@
     <Filter Include="來源檔案\time">
       <UniqueIdentifier>{112d5ae5-a814-4582-8068-fb16eac1183a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\math">
+      <UniqueIdentifier>{53cae91f-487a-4c71-9818-400ff9587b00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\curve">
+      <UniqueIdentifier>{d638b210-520b-4119-95ac-dab893bd8dd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\distribution">
+      <UniqueIdentifier>{603634f5-4d4d-4f22-9cb4-004807eeeb9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\distribution\continuousdist">
+      <UniqueIdentifier>{a414b0bd-0620-4e18-8c9a-c979dd86515e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\stochasticprocess">
+      <UniqueIdentifier>{7d2e365b-22d9-46d3-a881-bd5ce033cb55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\stochasticprocess\garchjump">
+      <UniqueIdentifier>{51f7a6c4-fce5-4001-af17-cedd37859fde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\stochasticprocess\compoundpoisson">
+      <UniqueIdentifier>{f0070479-5c54-4c66-b011-a7b585b5c4c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="QuantitativeFinance.cpp">
@@ -15,6 +36,12 @@
     </ClCompile>
     <ClCompile Include="date.cpp">
       <Filter>來源檔案\time</Filter>
+    </ClCompile>
+    <ClCompile Include="nonparametriccurve.cpp">
+      <Filter>來源檔案\math\curve</Filter>
+    </ClCompile>
+    <ClCompile Include="normaldistribution.cpp">
+      <Filter>來源檔案\math\distribution\continuousdist</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -26,6 +53,33 @@
     </ClInclude>
     <ClInclude Include="period.h">
       <Filter>來源檔案\time</Filter>
+    </ClInclude>
+    <ClInclude Include="curve.h">
+      <Filter>來源檔案\math\curve</Filter>
+    </ClInclude>
+    <ClInclude Include="nonparametriccurve.h">
+      <Filter>來源檔案\math\curve</Filter>
+    </ClInclude>
+    <ClInclude Include="compoundpoissonprocess.h">
+      <Filter>來源檔案\stochasticprocess</Filter>
+    </ClInclude>
+    <ClInclude Include="process.h">
+      <Filter>來源檔案\stochasticprocess</Filter>
+    </ClInclude>
+    <ClInclude Include="timehomogeneousparameter.h">
+      <Filter>來源檔案\stochasticprocess\garchjump</Filter>
+    </ClInclude>
+    <ClInclude Include="distribution.h">
+      <Filter>來源檔案\math\distribution</Filter>
+    </ClInclude>
+    <ClInclude Include="normaldistribution.h">
+      <Filter>來源檔案\math\distribution\continuousdist</Filter>
+    </ClInclude>
+    <ClInclude Include="parametricmodel.h">
+      <Filter>來源檔案</Filter>
+    </ClInclude>
+    <ClInclude Include="constant.h">
+      <Filter>來源檔案</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -40,4 +40,24 @@ namespace QuantitativeFinance
 	{
 		return unit_;
 	}
+
+	inline Period Period::days(NumberType number)
+	{
+		return Period(number, TimeUnit::DAYS);
+	}
+
+	inline Period Period::weeks(NumberType number)
+	{
+		return Period(number, TimeUnit::WEEKS);
+	}
+
+	inline Period Period::months(NumberType number)
+	{
+		return Period(number, TimeUnit::MONTHS);
+	}
+
+	inline Period Period::years(NumberType number)
+	{
+		return Period(number, TimeUnit::YEARS);
+	}
 }
