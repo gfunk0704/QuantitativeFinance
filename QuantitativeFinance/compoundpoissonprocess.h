@@ -10,12 +10,24 @@ namespace QuantitativeFinance
 	protected:
 		std::shared_ptr<ContinuousDistribution> jumpSizeDist_;
 		CompoundPoissonProcess(std::shared_ptr<ContinuousDistribution> jumpSizeDist);
-	public:
 
+		Real mgf(Real phi, Real lambda) const;
+	public:
+		std::shared_ptr<ContinuousDistribution> jumpSizeDist();
 	};
 
 	inline CompoundPoissonProcess::CompoundPoissonProcess(std::shared_ptr<ContinuousDistribution> jumpSizeDist):
 		Process({{"lambda", 0.0}}),
 		jumpSizeDist_(jumpSizeDist)
 	{}
+
+	inline Real CompoundPoissonProcess::mgf(Real phi, Real lambda) const
+	{
+		return lambda * (jumpSizeDist_->mgf(phi) - 1.0);
+	}
+
+	inline std::shared_ptr<ContinuousDistribution> CompoundPoissonProcess::jumpSizeDist()
+	{
+		return jumpSizeDist_;
+	}
 }

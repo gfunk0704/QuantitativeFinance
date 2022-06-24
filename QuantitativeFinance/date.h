@@ -63,8 +63,18 @@ namespace QuantitativeFinance
 		SerialType operator-(const Date& rhs) const;
 		Date operator+(const Period& period);
 		Date operator-(const Period& period);
+		bool operator>(const Date& rhs) const;
+		bool operator>=(const Date& rhs) const;
+		bool operator==(const Date& rhs) const;
+		bool operator!=(const Date& rhs) const;
+		bool operator<=(const Date& rhs) const;
+		bool operator<(const Date& rhs) const;
+		Date& operator++();
+		Date& operator--();
+		Date operator++(int);
+		Date operator--(int);
 
-		static Date origin();
+		static const Date origin();
 		static bool isLeap(const Date&);
 		static bool isLeap(Year yyyy);
 		static Day endOfMonth(const Date&);
@@ -129,9 +139,68 @@ namespace QuantitativeFinance
 		return *this + Period(-period.number(), period.unit());
 	}
 
-	inline Date Date::origin()
+	inline bool Date::operator>(const Date& rhs) const
 	{
-		static Date o(1970, Month::JAN, 1);
+		return serialNumber_ > rhs.serialNumber_;
+	}
+
+	inline bool Date::operator>=(const Date& rhs) const
+	{
+		return serialNumber_ >= rhs.serialNumber_;
+	}
+
+	inline bool Date::operator==(const Date& rhs) const
+	{
+		return serialNumber_ == rhs.serialNumber_;
+	}
+
+	inline bool Date::operator!=(const Date& rhs) const
+	{
+		return serialNumber_ != rhs.serialNumber_;
+	}
+
+	inline bool Date::operator<=(const Date& rhs) const
+	{
+		return serialNumber_ <= rhs.serialNumber_;
+	}
+
+	inline bool Date::operator<(const Date& rhs) const
+	{
+		return serialNumber_ < rhs.serialNumber_;
+	}
+
+	inline Date& Date::operator++()
+	{
+		++serialNumber_;
+		updateYmd_ = false;
+		return *this;
+	}
+
+	inline Date& Date::operator--()
+	{
+		--serialNumber_;
+		updateYmd_ = false;
+		return *this;
+	}
+
+	inline Date Date::operator++(int)
+	{
+		Date old(*this);
+		++*this;
+		update();
+		return old;
+	}
+
+	inline Date Date::operator--(int)
+	{
+		Date old(*this);
+		--*this;
+		return old;
+	}
+
+	inline const Date Date::origin()
+	{
+		static const Date o(1970, Month::JAN, 1);
 		return o;
 	}
 

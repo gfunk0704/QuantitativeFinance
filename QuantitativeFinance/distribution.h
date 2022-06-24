@@ -13,7 +13,6 @@ namespace QuantitativeFinance
 		virtual Real pdf(Real x) const  = 0;
 		virtual Real quantile(Real p) const  = 0;
 		virtual Real mean() const = 0;
-		virtual Real median() const  = 0;
 		virtual Real var() const = 0;
 		virtual Real mgf(Real phi) const = 0;
 	};

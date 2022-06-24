@@ -17,9 +17,6 @@
     <Filter Include="來源檔案\math\distribution">
       <UniqueIdentifier>{603634f5-4d4d-4f22-9cb4-004807eeeb9a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="來源檔案\math\distribution\continuousdist">
-      <UniqueIdentifier>{a414b0bd-0620-4e18-8c9a-c979dd86515e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="來源檔案\stochasticprocess">
       <UniqueIdentifier>{7d2e365b-22d9-46d3-a881-bd5ce033cb55}</UniqueIdentifier>
     </Filter>
@@ -28,6 +25,12 @@
     </Filter>
     <Filter Include="來源檔案\stochasticprocess\compoundpoisson">
       <UniqueIdentifier>{f0070479-5c54-4c66-b011-a7b585b5c4c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\distribution\continuousdistribution">
+      <UniqueIdentifier>{a414b0bd-0620-4e18-8c9a-c979dd86515e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\integral">
+      <UniqueIdentifier>{f1ff88cd-9376-408c-b9cb-18cf4e476694}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -41,7 +44,13 @@
       <Filter>來源檔案\math\curve</Filter>
     </ClCompile>
     <ClCompile Include="normaldistribution.cpp">
-      <Filter>來源檔案\math\distribution\continuousdist</Filter>
+      <Filter>來源檔案\math\distribution\continuousdistribution</Filter>
+    </ClCompile>
+    <ClCompile Include="gaussianlobatto.cpp">
+      <Filter>來源檔案\math\integral</Filter>
+    </ClCompile>
+    <ClCompile Include="gaussiankronrod.cpp">
+      <Filter>來源檔案\math\integral</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,13 +82,28 @@
       <Filter>來源檔案\math\distribution</Filter>
     </ClInclude>
     <ClInclude Include="normaldistribution.h">
-      <Filter>來源檔案\math\distribution\continuousdist</Filter>
+      <Filter>來源檔案\math\distribution\continuousdistribution</Filter>
     </ClInclude>
     <ClInclude Include="parametricmodel.h">
       <Filter>來源檔案</Filter>
     </ClInclude>
     <ClInclude Include="constant.h">
       <Filter>來源檔案</Filter>
+    </ClInclude>
+    <ClInclude Include="skewnormaldistribution.h">
+      <Filter>來源檔案\math\distribution\continuousdistribution</Filter>
+    </ClInclude>
+    <ClInclude Include="adaptivequadrature.h">
+      <Filter>來源檔案\math\integral</Filter>
+    </ClInclude>
+    <ClInclude Include="utility.h">
+      <Filter>來源檔案</Filter>
+    </ClInclude>
+    <ClInclude Include="gaussiankronrod.h">
+      <Filter>來源檔案\math\integral</Filter>
+    </ClInclude>
+    <ClInclude Include="gaussianlobatto.h">
+      <Filter>來源檔案\math\integral</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

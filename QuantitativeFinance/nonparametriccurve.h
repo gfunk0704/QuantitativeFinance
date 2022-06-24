@@ -1,6 +1,7 @@
 #pragma once
 
 #include "curve.h"
+#include "utility.h"
 
 namespace QuantitativeFinance
 {
@@ -30,7 +31,7 @@ namespace QuantitativeFinance
 	inline void NonparametricCurve::pushBack(Point2D pt)
 	{
 		if (points_.size())
-			assert(points_.back().x < pt.x);
+			ASSERT(points_.back().x < pt.x, "x's must be increasing");
 		points_.push_back(pt);
 	}
 

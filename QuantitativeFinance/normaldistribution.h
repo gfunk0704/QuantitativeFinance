@@ -11,6 +11,7 @@ namespace QuantitativeFinance
 	protected:
 		Real sigmaSqr_;
 		Real standerlization(Real x) const;
+		virtual void updateSigmaSquare();
 	public:
 		NormalDistribution(Real mu, Real sigma);
 		NormalDistribution();
@@ -22,7 +23,6 @@ namespace QuantitativeFinance
 		virtual Real pdf(Real x) const override;
 		virtual Real quantile(Real x) const override;
 		virtual Real mean() const override;
-		virtual Real median() const override;
 		virtual Real var() const override;
 		virtual Real mgf(Real phi) const override;
 
@@ -33,31 +33,40 @@ namespace QuantitativeFinance
 
 	inline NormalDistribution::NormalDistribution(Real mu, Real sigma) :
 		ContinuousDistribution({ {"mu", mu}, {"sigma", sigma} })
-	{}
+	{
+		updateSigmaSquare();
+	}
 
 	inline NormalDistribution::NormalDistribution() :
 		NormalDistribution(0.0, 1.0)
 	{}
+
+	inline void NormalDistribution::updateSigmaSquare()
+	{
+		sigmaSqr_ = parameter("sigma") * parameter("sigma");
+	}
 
 	inline Real NormalDistribution::standerlization(Real x) const
 	{
 		return (x - parameter("a")) / parameter("sigma");
 	}
 
-	constexpr List<String> NormalDistribution::parameterNames() const
+	inline List<String> NormalDistribution::parameterNames() const
 	{
-		return { "mu", "sigma" };
+		const static List<String> names = { "mu", "sigma" };
+		return names;
 	}
 
-	constexpr ParameterSpace NormalDistribution::parameterSpace() const
+	inline ParameterSpace NormalDistribution::parameterSpace() const
 	{
-		return { {"mu", Space::REAL}, {"sigma", Space::POSITIVE} };
+		const static ParameterSpace spaces = { {"mu", Space::REAL}, {"sigma", Space::POSITIVE} };
+		return spaces;
 	}
 
 	inline void NormalDistribution::setParameter(Parameter par)
 	{
 		ParametricModel::setParameter(par);
-		sigmaSqr_ = parameter("sigma") * parameter("sigma");
+		updateSigmaSquare();
 	}
 
 	inline Real NormalDistribution::cdf(Real x) const
@@ -76,11 +85,6 @@ namespace QuantitativeFinance
 	}
 
 	inline Real NormalDistribution::mean() const
-	{
-		return parameter("mu");
-	}
-
-	inline Real NormalDistribution::median() const
 	{
 		return parameter("mu");
 	}
