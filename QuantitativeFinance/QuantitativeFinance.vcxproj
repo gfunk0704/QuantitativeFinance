@@ -155,6 +155,7 @@
     <ClInclude Include="parametricmodel.h" />
     <ClInclude Include="period.h" />
     <ClInclude Include="process.h" />
+    <ClInclude Include="skewnormaldistribution.h" />
     <ClInclude Include="timehomogeneousparameter.h" />
     <ClInclude Include="type.h" />
   </ItemGroup>

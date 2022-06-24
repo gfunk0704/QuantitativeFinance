@@ -12,7 +12,9 @@ int main()
     Date d = Date(2020, Month::JAN, 31);
     Date d2 = d + Period::months(1);
     Date d3 = d2 + Period::years(1);
+    Date d4 = d3++;
     std::cout << d3 << std::endl;
+    std::cout << d4 << std::endl;
 }
 
 // 執行程式: Ctrl + F5 或 [偵錯] > [啟動但不偵錯] 功能表

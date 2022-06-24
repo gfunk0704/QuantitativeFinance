@@ -14,7 +14,7 @@ namespace QuantitativeFinance
         Unsigned yoe = static_cast<Unsigned>(yyyy - era * 400);                              // [0, 399]
         Unsigned doy = (153 * (monthNumber + (monthNumber > 2 ? -3 : 9)) + 2) / 5 + dd - 1;  // [0, 365]
         Unsigned doe = yoe * 365 + yoe / 4 - yoe / 100 + doy;                                // [0, 146096]
-        serialNumber_ = era * 146097 + static_cast<SerialType>(doe) - (719468 - 25569);
+        serialNumber_ = era * 146097 + static_cast<SerialType>(doe) - 719468;
 	}
 
     Date Date::shiftMonths(SerialType n)

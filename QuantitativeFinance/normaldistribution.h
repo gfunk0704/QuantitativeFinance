@@ -22,7 +22,6 @@ namespace QuantitativeFinance
 		virtual Real pdf(Real x) const override;
 		virtual Real quantile(Real x) const override;
 		virtual Real mean() const override;
-		virtual Real median() const override;
 		virtual Real var() const override;
 		virtual Real mgf(Real phi) const override;
 
@@ -44,12 +43,12 @@ namespace QuantitativeFinance
 		return (x - parameter("a")) / parameter("sigma");
 	}
 
-	constexpr List<String> NormalDistribution::parameterNames() const
+	inline List<String> NormalDistribution::parameterNames() const
 	{
 		return { "mu", "sigma" };
 	}
 
-	constexpr ParameterSpace NormalDistribution::parameterSpace() const
+	inline ParameterSpace NormalDistribution::parameterSpace() const
 	{
 		return { {"mu", Space::REAL}, {"sigma", Space::POSITIVE} };
 	}
@@ -76,11 +75,6 @@ namespace QuantitativeFinance
 	}
 
 	inline Real NormalDistribution::mean() const
-	{
-		return parameter("mu");
-	}
-
-	inline Real NormalDistribution::median() const
 	{
 		return parameter("mu");
 	}
