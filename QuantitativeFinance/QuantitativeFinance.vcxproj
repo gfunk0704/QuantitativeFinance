@@ -139,27 +139,42 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bisectionsolver.cpp" />
+    <ClCompile Include="centraldifference.cpp" />
     <ClCompile Include="date.cpp" />
+    <ClCompile Include="forwarddifference.cpp" />
     <ClCompile Include="gaussiankronrod.cpp" />
     <ClCompile Include="gaussianlobatto.cpp" />
     <ClCompile Include="nonparametriccurve.cpp" />
     <ClCompile Include="normaldistribution.cpp" />
     <ClCompile Include="QuantitativeFinance.cpp" />
+    <ClCompile Include="ridderssolver.cpp" />
+    <ClCompile Include="skewnormaldistribution.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bisectionsolver.h" />
+    <ClInclude Include="bracketingsolver.h" />
+    <ClInclude Include="centraldifference.h" />
     <ClInclude Include="compoundpoissonprocess.h" />
     <ClInclude Include="constant.h" />
     <ClInclude Include="distribution.h" />
     <ClInclude Include="curve.h" />
     <ClInclude Include="date.h" />
+    <ClInclude Include="finitedifference.h" />
+    <ClInclude Include="forwarddifference.h" />
     <ClInclude Include="gaussiankronrod.h" />
     <ClInclude Include="gaussianlobatto.h" />
+    <ClInclude Include="iterativesolver.h" />
+    <ClInclude Include="newtonsolver.h" />
     <ClInclude Include="nonparametriccurve.h" />
     <ClInclude Include="normaldistribution.h" />
     <ClInclude Include="adaptivequadrature.h" />
+    <ClInclude Include="ridderssolver.h" />
+    <ClInclude Include="steffensensolver.h" />
     <ClInclude Include="parametricmodel.h" />
     <ClInclude Include="period.h" />
     <ClInclude Include="process.h" />
+    <ClInclude Include="rootsolver.h" />
     <ClInclude Include="skewnormaldistribution.h" />
     <ClInclude Include="timehomogeneousparameter.h" />
     <ClInclude Include="type.h" />

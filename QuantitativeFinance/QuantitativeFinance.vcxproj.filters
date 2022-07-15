@@ -32,6 +32,15 @@
     <Filter Include="來源檔案\math\integral">
       <UniqueIdentifier>{f1ff88cd-9376-408c-b9cb-18cf4e476694}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\math\rootsolve">
+      <UniqueIdentifier>{c2cf23f9-20f9-4126-9b93-d0a2413222f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\derivative">
+      <UniqueIdentifier>{7bf80693-6f19-4dbb-bd08-d6b64b66cb14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\rootsolve\algorithm">
+      <UniqueIdentifier>{0ed1bf8e-90e2-48aa-8134-5bf7fc7c1ad3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="QuantitativeFinance.cpp">
@@ -51,6 +60,21 @@
     </ClCompile>
     <ClCompile Include="gaussiankronrod.cpp">
       <Filter>來源檔案\math\integral</Filter>
+    </ClCompile>
+    <ClCompile Include="skewnormaldistribution.cpp">
+      <Filter>來源檔案\math\distribution\continuousdistribution</Filter>
+    </ClCompile>
+    <ClCompile Include="forwarddifference.cpp">
+      <Filter>來源檔案\math\derivative</Filter>
+    </ClCompile>
+    <ClCompile Include="centraldifference.cpp">
+      <Filter>來源檔案\math\derivative</Filter>
+    </ClCompile>
+    <ClCompile Include="bisectionsolver.cpp">
+      <Filter>來源檔案\math\rootsolve\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="ridderssolver.cpp">
+      <Filter>來源檔案\math\rootsolve\algorithm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +128,36 @@
     </ClInclude>
     <ClInclude Include="gaussianlobatto.h">
       <Filter>來源檔案\math\integral</Filter>
+    </ClInclude>
+    <ClInclude Include="rootsolver.h">
+      <Filter>來源檔案\math\rootsolve</Filter>
+    </ClInclude>
+    <ClInclude Include="iterativesolver.h">
+      <Filter>來源檔案\math\rootsolve</Filter>
+    </ClInclude>
+    <ClInclude Include="finitedifference.h">
+      <Filter>來源檔案\math\derivative</Filter>
+    </ClInclude>
+    <ClInclude Include="forwarddifference.h">
+      <Filter>來源檔案\math\derivative</Filter>
+    </ClInclude>
+    <ClInclude Include="centraldifference.h">
+      <Filter>來源檔案\math\derivative</Filter>
+    </ClInclude>
+    <ClInclude Include="steffensensolver.h">
+      <Filter>來源檔案\math\rootsolve\algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="bisectionsolver.h">
+      <Filter>來源檔案\math\rootsolve\algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="newtonsolver.h">
+      <Filter>來源檔案\math\rootsolve\algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="bracketingsolver.h">
+      <Filter>來源檔案\math\rootsolve</Filter>
+    </ClInclude>
+    <ClInclude Include="ridderssolver.h">
+      <Filter>來源檔案\math\rootsolve\algorithm</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

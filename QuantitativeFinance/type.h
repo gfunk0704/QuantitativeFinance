@@ -2,6 +2,7 @@
 
 #include <complex>
 #include <cstdint>
+#include <functional>
 #include <vector>
 
 #include "./include/eigen-3.4.0/Eigen/Eigen"
@@ -26,4 +27,7 @@ namespace QuantitativeFinance
 	using NaturalArray1D = Eigen::ArrayX<Natural>;
 	using RealArray = Eigen::ArrayXX<Real>;
 	using RealArray1D = Eigen::ArrayXd;
+
+	using ScalarFunction1D = std::function<Real(Real)>;
+	using ScalarFunction = std::function<Real(RealArray1D)>;
 }

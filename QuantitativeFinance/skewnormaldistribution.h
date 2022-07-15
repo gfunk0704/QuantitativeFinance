@@ -4,10 +4,11 @@
 
 namespace QuantitativeFinance
 {
+
 	class SkewNormalDistribution : public NormalDistribution
 	{
 		Real delta_;
-		Real cdfScalar_;
+		Real pdfScalar_;
 
 		void updateDelta();
 		void updateCdfScalar();
@@ -25,15 +26,22 @@ namespace QuantitativeFinance
 		Real mean() const override;
 		Real var() const override;
 		Real mgf(Real phi) const override;
+
+		static Real owenT(Real a, Real h);
 	};
 
-	inline SkewNormalDistribution::SkewNormalDistribution(Real mu, Real sigma, Real alpha) :
+	inline SkewNormalDistribution::SkewNormalDistribution(
+		Real mu, 
+		Real sigma, 
+		Real alpha
+	):
 		NormalDistribution(mu, sigma)
 	{
 		parameter_["alpha"] = alpha;
 		updateDelta();
 		updateCdfScalar();
 	}
+
 
 	inline SkewNormalDistribution::SkewNormalDistribution():
 		SkewNormalDistribution(0.0, 1.0, 0.0)
@@ -47,7 +55,7 @@ namespace QuantitativeFinance
 
 	inline void SkewNormalDistribution::updateCdfScalar()
 	{
-		cdfScalar_ = 2.0 / parameter("sigma");
+		pdfScalar_ = 2.0 / parameter("sigma");
 	}
 
 	inline List<String> SkewNormalDistribution::parameterNames() const
@@ -72,7 +80,14 @@ namespace QuantitativeFinance
 	inline Real SkewNormalDistribution::pdf(Real x) const
 	{
 		Real z = standerlization(x);
-		return cdfScalar_ * standardNormalPdf(z) * 
+		return pdfScalar_ * standardNormalPdf(z) * 
 			standardNormalCdf(parameter("alpha") * z);
 	}
+
+	inline Real SkewNormalDistribution::cdf(Real x) const
+	{
+		Real z = standerlization(x);
+		return standardNormalCdf(z) - 2.0 * owenT(z, parameter("alpha"));
+	}
+
 }
