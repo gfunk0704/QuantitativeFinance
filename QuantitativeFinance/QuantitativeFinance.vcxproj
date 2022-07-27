@@ -72,12 +72,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -88,6 +90,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>c:\boost\boost_1_79_0;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -116,6 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>c:\boost\boost_1_79_0;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,18 +152,18 @@
     <ClCompile Include="nonparametriccurve.cpp" />
     <ClCompile Include="normaldistribution.cpp" />
     <ClCompile Include="QuantitativeFinance.cpp" />
-    <ClCompile Include="ridderssolver.cpp" />
-    <ClCompile Include="skewnormaldistribution.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bisectionsolver.h" />
     <ClInclude Include="bracketingsolver.h" />
     <ClInclude Include="centraldifference.h" />
-    <ClInclude Include="compoundpoissonprocess.h" />
+    <ClInclude Include="observerpattern.h" />
+    <ClInclude Include="stochasticprocess.h" />
     <ClInclude Include="constant.h" />
-    <ClInclude Include="distribution.h" />
+    <ClInclude Include="univariatedistribution.h" />
     <ClInclude Include="curve.h" />
     <ClInclude Include="date.h" />
+    <ClInclude Include="exponentialdistribution.h" />
     <ClInclude Include="finitedifference.h" />
     <ClInclude Include="forwarddifference.h" />
     <ClInclude Include="gaussiankronrod.h" />
@@ -169,14 +173,11 @@
     <ClInclude Include="nonparametriccurve.h" />
     <ClInclude Include="normaldistribution.h" />
     <ClInclude Include="adaptivequadrature.h" />
-    <ClInclude Include="ridderssolver.h" />
     <ClInclude Include="steffensensolver.h" />
     <ClInclude Include="parametricmodel.h" />
     <ClInclude Include="period.h" />
-    <ClInclude Include="process.h" />
     <ClInclude Include="rootsolver.h" />
     <ClInclude Include="skewnormaldistribution.h" />
-    <ClInclude Include="timehomogeneousparameter.h" />
     <ClInclude Include="type.h" />
     <ClInclude Include="utility.h" />
   </ItemGroup>

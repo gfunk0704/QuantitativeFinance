@@ -14,20 +14,8 @@
     <Filter Include="來源檔案\math\curve">
       <UniqueIdentifier>{d638b210-520b-4119-95ac-dab893bd8dd9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="來源檔案\math\distribution">
-      <UniqueIdentifier>{603634f5-4d4d-4f22-9cb4-004807eeeb9a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="來源檔案\stochasticprocess">
       <UniqueIdentifier>{7d2e365b-22d9-46d3-a881-bd5ce033cb55}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="來源檔案\stochasticprocess\garchjump">
-      <UniqueIdentifier>{51f7a6c4-fce5-4001-af17-cedd37859fde}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="來源檔案\stochasticprocess\compoundpoisson">
-      <UniqueIdentifier>{f0070479-5c54-4c66-b011-a7b585b5c4c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="來源檔案\math\distribution\continuousdistribution">
-      <UniqueIdentifier>{a414b0bd-0620-4e18-8c9a-c979dd86515e}</UniqueIdentifier>
     </Filter>
     <Filter Include="來源檔案\math\integral">
       <UniqueIdentifier>{f1ff88cd-9376-408c-b9cb-18cf4e476694}</UniqueIdentifier>
@@ -41,6 +29,15 @@
     <Filter Include="來源檔案\math\rootsolve\algorithm">
       <UniqueIdentifier>{0ed1bf8e-90e2-48aa-8134-5bf7fc7c1ad3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\math\univariatedistribution">
+      <UniqueIdentifier>{603634f5-4d4d-4f22-9cb4-004807eeeb9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\univariatedistribution\continuousdistribution">
+      <UniqueIdentifier>{a414b0bd-0620-4e18-8c9a-c979dd86515e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\pattern">
+      <UniqueIdentifier>{1df824e4-11e2-47c2-a249-a22f548328e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="QuantitativeFinance.cpp">
@@ -53,16 +50,13 @@
       <Filter>來源檔案\math\curve</Filter>
     </ClCompile>
     <ClCompile Include="normaldistribution.cpp">
-      <Filter>來源檔案\math\distribution\continuousdistribution</Filter>
+      <Filter>來源檔案\math\univariatedistribution\continuousdistribution</Filter>
     </ClCompile>
     <ClCompile Include="gaussianlobatto.cpp">
       <Filter>來源檔案\math\integral</Filter>
     </ClCompile>
     <ClCompile Include="gaussiankronrod.cpp">
       <Filter>來源檔案\math\integral</Filter>
-    </ClCompile>
-    <ClCompile Include="skewnormaldistribution.cpp">
-      <Filter>來源檔案\math\distribution\continuousdistribution</Filter>
     </ClCompile>
     <ClCompile Include="forwarddifference.cpp">
       <Filter>來源檔案\math\derivative</Filter>
@@ -71,9 +65,6 @@
       <Filter>來源檔案\math\derivative</Filter>
     </ClCompile>
     <ClCompile Include="bisectionsolver.cpp">
-      <Filter>來源檔案\math\rootsolve\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="ridderssolver.cpp">
       <Filter>來源檔案\math\rootsolve\algorithm</Filter>
     </ClCompile>
   </ItemGroup>
@@ -93,20 +84,11 @@
     <ClInclude Include="nonparametriccurve.h">
       <Filter>來源檔案\math\curve</Filter>
     </ClInclude>
-    <ClInclude Include="compoundpoissonprocess.h">
-      <Filter>來源檔案\stochasticprocess</Filter>
-    </ClInclude>
-    <ClInclude Include="process.h">
-      <Filter>來源檔案\stochasticprocess</Filter>
-    </ClInclude>
-    <ClInclude Include="timehomogeneousparameter.h">
-      <Filter>來源檔案\stochasticprocess\garchjump</Filter>
-    </ClInclude>
-    <ClInclude Include="distribution.h">
-      <Filter>來源檔案\math\distribution</Filter>
+    <ClInclude Include="univariatedistribution.h">
+      <Filter>來源檔案\math\univariatedistribution</Filter>
     </ClInclude>
     <ClInclude Include="normaldistribution.h">
-      <Filter>來源檔案\math\distribution\continuousdistribution</Filter>
+      <Filter>來源檔案\math\univariatedistribution\continuousdistribution</Filter>
     </ClInclude>
     <ClInclude Include="parametricmodel.h">
       <Filter>來源檔案</Filter>
@@ -115,7 +97,7 @@
       <Filter>來源檔案</Filter>
     </ClInclude>
     <ClInclude Include="skewnormaldistribution.h">
-      <Filter>來源檔案\math\distribution\continuousdistribution</Filter>
+      <Filter>來源檔案\math\univariatedistribution\continuousdistribution</Filter>
     </ClInclude>
     <ClInclude Include="adaptivequadrature.h">
       <Filter>來源檔案\math\integral</Filter>
@@ -156,8 +138,14 @@
     <ClInclude Include="bracketingsolver.h">
       <Filter>來源檔案\math\rootsolve</Filter>
     </ClInclude>
-    <ClInclude Include="ridderssolver.h">
-      <Filter>來源檔案\math\rootsolve\algorithm</Filter>
+    <ClInclude Include="exponentialdistribution.h">
+      <Filter>來源檔案\math\univariatedistribution\continuousdistribution</Filter>
+    </ClInclude>
+    <ClInclude Include="stochasticprocess.h">
+      <Filter>來源檔案\stochasticprocess</Filter>
+    </ClInclude>
+    <ClInclude Include="observerpattern.h">
+      <Filter>來源檔案\pattern</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

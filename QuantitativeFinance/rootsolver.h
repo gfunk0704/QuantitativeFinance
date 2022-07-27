@@ -10,8 +10,7 @@ namespace QuantitativeFinance
 		enum class Convergence
 		{
 			TOL_REACH,
-			MAX_ITER_REACH,
-			NOT_BRACKETED
+			MAX_ITER_REACH
 		};
 		
 		Convergence convergence;

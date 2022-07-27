@@ -50,6 +50,6 @@ namespace QuantitativeFinance
 	template<class T>
 	inline Real IterativeSolver<T>::g(const ScalarFunction1D f, Real x, Real fx)
 	{
-		return static_cast<T*>(this)->evaluateG(f, x, fx);
+		return static_cast<T*>(this)->implementG(f, x, fx);
 	}
 }

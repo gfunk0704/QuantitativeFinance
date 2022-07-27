@@ -10,7 +10,7 @@ namespace QuantitativeFinance
 		SteffensenSolver(Size maxIteration, Real tol);
 		SteffensenSolver();
 
-		Real evaluateG(const ScalarFunction1D f, Real x, Real fx);
+		Real implementG(const ScalarFunction1D f, Real x, Real fx);
 	};
 
 	inline SteffensenSolver::SteffensenSolver(Size maxIteration, Real tol):
@@ -21,7 +21,7 @@ namespace QuantitativeFinance
 		IterativeSolver<SteffensenSolver>()
 	{}
 
-	inline Real SteffensenSolver::evaluateG(const ScalarFunction1D f, Real x, Real fx)
+	inline Real SteffensenSolver::implementG(const ScalarFunction1D f, Real x, Real fx)
 	{
 		return (f(x + fx) - fx) / fx;
 	}

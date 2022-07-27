@@ -1,7 +1,7 @@
 #pragma once
 
 #include "constant.h"
-#include "distribution.h"
+#include "univariatedistribution.h"
 
 namespace QuantitativeFinance
 {

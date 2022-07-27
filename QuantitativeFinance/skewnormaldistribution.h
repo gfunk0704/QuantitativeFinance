@@ -1,6 +1,10 @@
 #pragma once
 
+#include <boost/math/special_functions/owens_t.hpp>
+
 #include "normaldistribution.h"
+#include "steffensensolver.h"
+#include "utility.h"
 
 namespace QuantitativeFinance
 {
@@ -9,10 +13,10 @@ namespace QuantitativeFinance
 	{
 		Real delta_;
 		Real pdfScalar_;
+		static SteffensenSolver quantileSolver_;
 
 		void updateDelta();
 		void updateCdfScalar();
-
 	public:
 		SkewNormalDistribution(Real mu, Real sigma, Real alpha);
 		SkewNormalDistribution();
@@ -27,7 +31,7 @@ namespace QuantitativeFinance
 		Real var() const override;
 		Real mgf(Real phi) const override;
 
-		static Real owenT(Real a, Real h);
+		static SteffensenSolver& quantileSolver();
 	};
 
 	inline SkewNormalDistribution::SkewNormalDistribution(
@@ -41,7 +45,6 @@ namespace QuantitativeFinance
 		updateDelta();
 		updateCdfScalar();
 	}
-
 
 	inline SkewNormalDistribution::SkewNormalDistribution():
 		SkewNormalDistribution(0.0, 1.0, 0.0)
@@ -87,7 +90,42 @@ namespace QuantitativeFinance
 	inline Real SkewNormalDistribution::cdf(Real x) const
 	{
 		Real z = standerlization(x);
-		return standardNormalCdf(z) - 2.0 * owenT(z, parameter("alpha"));
+		return standardNormalCdf(z) - 2.0 * boost::math::owens_t(z, parameter("alpha"));
 	}
 
+	inline Real SkewNormalDistribution::quantile(Real p) const
+	{
+		auto objectFunction = [this, p](Real x) -> Real {return cdf(x) - p; };
+		auto result = quantileSolver_.solve(objectFunction, mean());
+		if (result.convergence == RootFindingResult::Convergence::MAX_ITER_REACH)
+		{
+			WARNING("iteration reaches limits");
+		}
+		return result.x;
+	}
+
+	inline Real SkewNormalDistribution::mean() const
+	{
+		static const Real meanScalar = std::sqrt(2.0 / PI);
+		return parameter("mu") + parameter("sigma") * delta_ * meanScalar;
+	}
+
+	inline Real SkewNormalDistribution::var() const
+	{
+		static const Real varScalar = 2.0 / PI;
+		return parameter("sigma") * parameter("sigma") * (1.0 - delta_ * delta_ * varScalar);
+	}
+
+	inline Real SkewNormalDistribution::mgf(Real phi) const
+	{
+		Real sigma = parameter("sigma");
+		Real z1 = parameter("mu") * phi + 0.5 * sigma * sigma * phi * phi;
+		Real z2 = delta_ * sigma * phi;
+		return 2.0 * std::exp(z1) * standardNormalCdf(z2);
+	}
+
+	inline SteffensenSolver& SkewNormalDistribution::quantileSolver()
+	{
+		return quantileSolver_;
+	}
 }

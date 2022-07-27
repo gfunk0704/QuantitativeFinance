@@ -25,7 +25,7 @@ namespace QuantitativeFinance
 
 	inline Real CentralDifference::evaluate(const ScalarFunction1D f, Real x)
 	{
-		return (f(x + h_) - f(x - h_)) / h_;
+		return (f(x + h_) - f(x - h_)) / (2.0 * h_);
 	}
 
 	inline Real CentralDifference::evaluate(const ScalarFunction1D f, Real x, Real fx)
