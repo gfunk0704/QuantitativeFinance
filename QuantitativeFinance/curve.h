@@ -4,10 +4,10 @@
 
 namespace QuantitativeFinance
 {
-	class Curve
-	{
-	public:
-		virtual Real interpolate(Real x) = 0;
-		virtual Real integral(Real x) = 0;
-	};
+		class Curve
+		{
+		public:
+				virtual Real getY(Real x) const = 0;
+				virtual Real integral(Real x)  const = 0;
+		};
 }

@@ -14,24 +14,6 @@
     <Filter Include="來源檔案\math\curve">
       <UniqueIdentifier>{d638b210-520b-4119-95ac-dab893bd8dd9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="來源檔案\math\distribution">
-      <UniqueIdentifier>{603634f5-4d4d-4f22-9cb4-004807eeeb9a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="來源檔案\stochasticprocess">
-      <UniqueIdentifier>{7d2e365b-22d9-46d3-a881-bd5ce033cb55}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="來源檔案\stochasticprocess\garchjump">
-      <UniqueIdentifier>{51f7a6c4-fce5-4001-af17-cedd37859fde}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="來源檔案\stochasticprocess\compoundpoisson">
-      <UniqueIdentifier>{f0070479-5c54-4c66-b011-a7b585b5c4c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="來源檔案\math\distribution\continuousdistribution">
-      <UniqueIdentifier>{a414b0bd-0620-4e18-8c9a-c979dd86515e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="來源檔案\math\integral">
-      <UniqueIdentifier>{f1ff88cd-9376-408c-b9cb-18cf4e476694}</UniqueIdentifier>
-    </Filter>
     <Filter Include="來源檔案\math\rootsolve">
       <UniqueIdentifier>{c2cf23f9-20f9-4126-9b93-d0a2413222f2}</UniqueIdentifier>
     </Filter>
@@ -41,28 +23,49 @@
     <Filter Include="來源檔案\math\rootsolve\algorithm">
       <UniqueIdentifier>{0ed1bf8e-90e2-48aa-8134-5bf7fc7c1ad3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\math\univariatedistribution">
+      <UniqueIdentifier>{603634f5-4d4d-4f22-9cb4-004807eeeb9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\math\univariatedistribution\continuousdistribution">
+      <UniqueIdentifier>{a414b0bd-0620-4e18-8c9a-c979dd86515e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\pattern">
+      <UniqueIdentifier>{1df824e4-11e2-47c2-a249-a22f548328e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\termstructure">
+      <UniqueIdentifier>{f1162dcf-4974-451c-add8-2373378ff73c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\quote">
+      <UniqueIdentifier>{bcaaac35-0f21-4394-b208-f962fe80ef24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\time\calendar">
+      <UniqueIdentifier>{db17c90b-09da-4c37-a492-52cd951c942f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\quote\interestrate">
+      <UniqueIdentifier>{7dbc1bd4-2a13-4fa5-befe-0fffda57cc1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\model">
+      <UniqueIdentifier>{7d2e365b-22d9-46d3-a881-bd5ce033cb55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\model\foreignexchange">
+      <UniqueIdentifier>{638cff61-bece-42b6-8b74-60e9ac6ec634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\model\interestrate">
+      <UniqueIdentifier>{63cc5f9c-53c2-4387-a7ec-51ab43536915}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\instrument">
+      <UniqueIdentifier>{4efe83dd-4d8f-4564-93c5-f1f8d4382bc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\instrument\interestrate">
+      <UniqueIdentifier>{7432e4e0-002f-4ed1-b813-b34c0c4393e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="QuantitativeFinance.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
     <ClCompile Include="date.cpp">
       <Filter>來源檔案\time</Filter>
     </ClCompile>
-    <ClCompile Include="nonparametriccurve.cpp">
-      <Filter>來源檔案\math\curve</Filter>
-    </ClCompile>
-    <ClCompile Include="normaldistribution.cpp">
-      <Filter>來源檔案\math\distribution\continuousdistribution</Filter>
-    </ClCompile>
-    <ClCompile Include="gaussianlobatto.cpp">
-      <Filter>來源檔案\math\integral</Filter>
-    </ClCompile>
-    <ClCompile Include="gaussiankronrod.cpp">
-      <Filter>來源檔案\math\integral</Filter>
-    </ClCompile>
-    <ClCompile Include="skewnormaldistribution.cpp">
-      <Filter>來源檔案\math\distribution\continuousdistribution</Filter>
+    <ClCompile Include="gaussian.cpp">
+      <Filter>來源檔案\math\univariatedistribution\continuousdistribution</Filter>
     </ClCompile>
     <ClCompile Include="forwarddifference.cpp">
       <Filter>來源檔案\math\derivative</Filter>
@@ -73,8 +76,29 @@
     <ClCompile Include="bisectionsolver.cpp">
       <Filter>來源檔案\math\rootsolve\algorithm</Filter>
     </ClCompile>
-    <ClCompile Include="ridderssolver.cpp">
-      <Filter>來源檔案\math\rootsolve\algorithm</Filter>
+    <ClCompile Include="unitedstatesholidayrule.cpp">
+      <Filter>來源檔案\time\calendar</Filter>
+    </ClCompile>
+    <ClCompile Include="nonparametriccurve.cpp">
+      <Filter>來源檔案\math\curve</Filter>
+    </ClCompile>
+    <ClCompile Include="iterativesolver.cpp">
+      <Filter>來源檔案\math\rootsolve</Filter>
+    </ClCompile>
+    <ClCompile Include="parametricmodel.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="countrycalendar.cpp">
+      <Filter>來源檔案\time</Filter>
+    </ClCompile>
+    <ClCompile Include="calendar.cpp">
+      <Filter>來源檔案\time</Filter>
+    </ClCompile>
+    <ClCompile Include="daycount.cpp">
+      <Filter>來源檔案\time</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>來源檔案</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -93,41 +117,17 @@
     <ClInclude Include="nonparametriccurve.h">
       <Filter>來源檔案\math\curve</Filter>
     </ClInclude>
-    <ClInclude Include="compoundpoissonprocess.h">
-      <Filter>來源檔案\stochasticprocess</Filter>
+    <ClInclude Include="univariatedistribution.h">
+      <Filter>來源檔案\math\univariatedistribution</Filter>
     </ClInclude>
-    <ClInclude Include="process.h">
-      <Filter>來源檔案\stochasticprocess</Filter>
-    </ClInclude>
-    <ClInclude Include="timehomogeneousparameter.h">
-      <Filter>來源檔案\stochasticprocess\garchjump</Filter>
-    </ClInclude>
-    <ClInclude Include="distribution.h">
-      <Filter>來源檔案\math\distribution</Filter>
-    </ClInclude>
-    <ClInclude Include="normaldistribution.h">
-      <Filter>來源檔案\math\distribution\continuousdistribution</Filter>
-    </ClInclude>
-    <ClInclude Include="parametricmodel.h">
-      <Filter>來源檔案</Filter>
+    <ClInclude Include="gaussian.h">
+      <Filter>來源檔案\math\univariatedistribution\continuousdistribution</Filter>
     </ClInclude>
     <ClInclude Include="constant.h">
       <Filter>來源檔案</Filter>
     </ClInclude>
-    <ClInclude Include="skewnormaldistribution.h">
-      <Filter>來源檔案\math\distribution\continuousdistribution</Filter>
-    </ClInclude>
-    <ClInclude Include="adaptivequadrature.h">
-      <Filter>來源檔案\math\integral</Filter>
-    </ClInclude>
     <ClInclude Include="utility.h">
       <Filter>來源檔案</Filter>
-    </ClInclude>
-    <ClInclude Include="gaussiankronrod.h">
-      <Filter>來源檔案\math\integral</Filter>
-    </ClInclude>
-    <ClInclude Include="gaussianlobatto.h">
-      <Filter>來源檔案\math\integral</Filter>
     </ClInclude>
     <ClInclude Include="rootsolver.h">
       <Filter>來源檔案\math\rootsolve</Filter>
@@ -156,8 +156,74 @@
     <ClInclude Include="bracketingsolver.h">
       <Filter>來源檔案\math\rootsolve</Filter>
     </ClInclude>
-    <ClInclude Include="ridderssolver.h">
-      <Filter>來源檔案\math\rootsolve\algorithm</Filter>
+    <ClInclude Include="observerpattern.h">
+      <Filter>來源檔案\pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="quote.h">
+      <Filter>來源檔案\quote</Filter>
+    </ClInclude>
+    <ClInclude Include="currency.h">
+      <Filter>來源檔案</Filter>
+    </ClInclude>
+    <ClInclude Include="currencypair.h">
+      <Filter>來源檔案</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.h">
+      <Filter>來源檔案\pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="unitedstatesholidayrule.h">
+      <Filter>來源檔案\time\calendar</Filter>
+    </ClInclude>
+    <ClInclude Include="nullholidayrule.h">
+      <Filter>來源檔案\time\calendar</Filter>
+    </ClInclude>
+    <ClInclude Include="nationalholidayrule.h">
+      <Filter>來源檔案\time\calendar</Filter>
+    </ClInclude>
+    <ClInclude Include="piecewiseconstant.h">
+      <Filter>來源檔案\math\curve</Filter>
+    </ClInclude>
+    <ClInclude Include="countrycalendar.h">
+      <Filter>來源檔案\time</Filter>
+    </ClInclude>
+    <ClInclude Include="parametricmodel.h">
+      <Filter>來源檔案</Filter>
+    </ClInclude>
+    <ClInclude Include="virtualhestonmodel.h">
+      <Filter>來源檔案\model\foreignexchange</Filter>
+    </ClInclude>
+    <ClInclude Include="interestratetermstructure.h">
+      <Filter>來源檔案\termstructure</Filter>
+    </ClInclude>
+    <ClInclude Include="calendar.h">
+      <Filter>來源檔案\time</Filter>
+    </ClInclude>
+    <ClInclude Include="hestonmodel.h">
+      <Filter>來源檔案\model\foreignexchange</Filter>
+    </ClInclude>
+    <ClInclude Include="interestratequote.h">
+      <Filter>來源檔案\quote\interestrate</Filter>
+    </ClInclude>
+    <ClInclude Include="daycount.h">
+      <Filter>來源檔案\time</Filter>
+    </ClInclude>
+    <ClInclude Include="valuedate.h">
+      <Filter>來源檔案</Filter>
+    </ClInclude>
+    <ClInclude Include="cashrate.h">
+      <Filter>來源檔案\quote\interestrate</Filter>
+    </ClInclude>
+    <ClInclude Include="deterministicriskfreerate.h">
+      <Filter>來源檔案\model\interestrate</Filter>
+    </ClInclude>
+    <ClInclude Include="instrument.h">
+      <Filter>來源檔案\instrument</Filter>
+    </ClInclude>
+    <ClInclude Include="linearinterestrateinstrument.h">
+      <Filter>來源檔案\instrument\interestrate</Filter>
+    </ClInclude>
+    <ClInclude Include="setonce.h">
+      <Filter>來源檔案\pattern</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

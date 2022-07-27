@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -72,12 +72,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -88,6 +90,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>c:\boost\boost_1_79_0;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -116,6 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>c:\boost\boost_1_79_0;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,45 +144,61 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bisectionsolver.cpp" />
+    <ClCompile Include="calendar.cpp" />
+    <ClCompile Include="countrycalendar.cpp" />
     <ClCompile Include="centraldifference.cpp" />
     <ClCompile Include="date.cpp" />
+    <ClCompile Include="daycount.cpp" />
     <ClCompile Include="forwarddifference.cpp" />
-    <ClCompile Include="gaussiankronrod.cpp" />
-    <ClCompile Include="gaussianlobatto.cpp" />
+    <ClCompile Include="iterativesolver.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="nonparametriccurve.cpp" />
-    <ClCompile Include="normaldistribution.cpp" />
-    <ClCompile Include="QuantitativeFinance.cpp" />
-    <ClCompile Include="ridderssolver.cpp" />
-    <ClCompile Include="skewnormaldistribution.cpp" />
+    <ClCompile Include="gaussian.cpp" />
+    <ClCompile Include="parametricmodel.cpp" />
+    <ClCompile Include="unitedstatesholidayrule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bisectionsolver.h" />
     <ClInclude Include="bracketingsolver.h" />
+    <ClInclude Include="calendar.h" />
+    <ClInclude Include="cashrate.h" />
+    <ClInclude Include="daycount.h" />
+    <ClInclude Include="deterministicriskfreerate.h" />
+    <ClInclude Include="instrument.h" />
+    <ClInclude Include="linearinterestrateinstrument.h" />
+    <ClInclude Include="setonce.h" />
+    <ClInclude Include="valuedate.h" />
+    <ClInclude Include="interestratequote.h" />
+    <ClInclude Include="countrycalendar.h" />
     <ClInclude Include="centraldifference.h" />
-    <ClInclude Include="compoundpoissonprocess.h" />
+    <ClInclude Include="currency.h" />
+    <ClInclude Include="currencypair.h" />
+    <ClInclude Include="hestonmodel.h" />
+    <ClInclude Include="virtualhestonmodel.h" />
+    <ClInclude Include="nationalholidayrule.h" />
+    <ClInclude Include="nullholidayrule.h" />
+    <ClInclude Include="observerpattern.h" />
     <ClInclude Include="constant.h" />
-    <ClInclude Include="distribution.h" />
+    <ClInclude Include="parametricmodel.h" />
+    <ClInclude Include="piecewiseconstant.h" />
+    <ClInclude Include="quote.h" />
+    <ClInclude Include="singleton.h" />
+    <ClInclude Include="univariatedistribution.h" />
     <ClInclude Include="curve.h" />
     <ClInclude Include="date.h" />
     <ClInclude Include="finitedifference.h" />
     <ClInclude Include="forwarddifference.h" />
-    <ClInclude Include="gaussiankronrod.h" />
-    <ClInclude Include="gaussianlobatto.h" />
     <ClInclude Include="iterativesolver.h" />
     <ClInclude Include="newtonsolver.h" />
     <ClInclude Include="nonparametriccurve.h" />
-    <ClInclude Include="normaldistribution.h" />
-    <ClInclude Include="adaptivequadrature.h" />
-    <ClInclude Include="ridderssolver.h" />
+    <ClInclude Include="gaussian.h" />
     <ClInclude Include="steffensensolver.h" />
-    <ClInclude Include="parametricmodel.h" />
     <ClInclude Include="period.h" />
-    <ClInclude Include="process.h" />
     <ClInclude Include="rootsolver.h" />
-    <ClInclude Include="skewnormaldistribution.h" />
-    <ClInclude Include="timehomogeneousparameter.h" />
     <ClInclude Include="type.h" />
+    <ClInclude Include="unitedstatesholidayrule.h" />
     <ClInclude Include="utility.h" />
+    <ClInclude Include="interestratetermstructure.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

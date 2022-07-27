@@ -4,20 +4,22 @@
 
 namespace QuantitativeFinance
 {
-	class BisectionSolver : public BracketingSolver
-	{
-	public:
-		BisectionSolver(Size maxIteration, Real tol);
-		BisectionSolver();
+		class BisectionSolver : public BracketingSolver
+		{
+		public:
+				BisectionSolver(Size maxIteration, Real tol);
+				BisectionSolver();
 
-		RootFindingResult solve(const ScalarFunction1D f, Real a, Real b) override;
-	};
+				RootFindingResult solve(const ScalarFunction1D f, Real a, Real b) const override;
+		};
 
-	inline BisectionSolver::BisectionSolver(Size maxIteration, Real tol):
-		BracketingSolver(maxIteration, tol)
-	{}
+		inline BisectionSolver::BisectionSolver(Size maxIteration, Real tol)
+				:
+				BracketingSolver(maxIteration, tol)
+		{}
 
-	inline 	BisectionSolver::BisectionSolver():
-		BracketingSolver()
-	{}
+		inline 	BisectionSolver::BisectionSolver()
+				:
+				BracketingSolver()
+		{}
 }

@@ -5,14 +5,14 @@
 
 namespace QuantitativeFinance
 {
-	class NewtonSolver : public IterativeSolver<NewtonSolver>
+	class NewtonSolver : public IterativeSolver
 	{
 		std::shared_ptr<FiniteDifference> derivative_;
 	public:
 		NewtonSolver(Size maxIteration, Real tol, std::shared_ptr<FiniteDifference> derivative);
 		NewtonSolver();
 
-		Real evaluateG(const ScalarFunction1D f, Real x, Real fx);
+		Real implementG(const ScalarFunction1D f, Real x, Real fx);
 	};
 
 	inline NewtonSolver::NewtonSolver(
@@ -20,16 +20,16 @@ namespace QuantitativeFinance
 		Real tol, 
 		std::shared_ptr<FiniteDifference> derivative
 	) :
-		IterativeSolver<NewtonSolver>(maxIteration, tol),
+		IterativeSolver(maxIteration, tol),
 		derivative_(derivative)
 	{}
 
 	inline NewtonSolver::NewtonSolver() :
-		IterativeSolver<NewtonSolver>(),
+		IterativeSolver(),
 		derivative_(std::shared_ptr<FiniteDifference>(new ForwardDifference()))
 	{}
 
-	inline Real NewtonSolver::evaluateG(const ScalarFunction1D f, Real x, Real fx)
+	inline Real NewtonSolver::implementG(const ScalarFunction1D f, Real x, Real fx)
 	{
 		return derivative_->evaluate(f, x, fx);
 	}

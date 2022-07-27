@@ -1,48 +1,67 @@
 #pragma once
 
-#include <unordered_map>;
-
 #include "type.h"
+#include "utility.h"
 
 namespace QuantitativeFinance
 {
-	enum class Space
-	{
-		MINUS_ONE_TO_ONE,
-		POSITIVE,
-		REAL
-	};
-	
-	using Parameter = std::unordered_map<String, Real>;
-	using ParameterSpace = std::unordered_map<String, Space>;
-
-	class ParametricModel
-	{
-	protected:
-		Parameter parameter_;
-		ParametricModel(Parameter parameter);
-	public:
-		Real parameter(String name) const;
-		virtual List<String> parameterNames() const = 0;
-		virtual ParameterSpace parameterSpace() const = 0;
-		virtual void setParameter(Parameter par);
-	};
-
-	inline ParametricModel::ParametricModel(Parameter parameter):
-		parameter_(parameter)
-	{}
-
-	inline Real ParametricModel::parameter(String name) const
-	{
-		return parameter_.find(name)->second;
-	}
-
-	void ParametricModel::setParameter(Parameter par)
-	{
-		for (auto elem : par)
+		class ParametricModel
 		{
-			if (parameter_.count(elem.first))
-				parameter_[elem.first] = elem.second;
+		public:
+				virtual Real getParam(const String& name) const;
+				virtual std::map<String, Real> getParam() const;
+				virtual void setParam(std::vector<Real> params);
+				virtual void setParam(std::map<String, Real> params);
+
+				Size nParams() const;
+				virtual std::vector<String> paramNames() const = 0;
+				virtual std::vector<Real> paramLowerBound() const = 0;
+				virtual std::vector<Real> paramUpperBound() const = 0;
+		protected:
+				ParametricModel();
+				std::vector<Real> params_;
+				Size getIndex(const String& name) const;
+				void validility() const;
+				virtual std::vector<Real> mapToParameterSpace(std::vector<Real> values) const;
+		};
+
+		inline ParametricModel::ParametricModel()
+		{
+				params_.resize(nParams());
 		}
-	}
+
+		inline Real ParametricModel::getParam(const String& name) const
+		{
+				return params_[getIndex(name)];
+		}
+
+		inline void ParametricModel::setParam(std::vector<Real> params)
+		{
+				ASSERT(params.size() == nParams(), "dimensions are mismatched");
+				params_ = mapToParameterSpace(params);
+		}
+
+		inline void ParametricModel::setParam(std::map<String, Real> params)
+		{
+				auto names = paramNames();
+				for (Size i = 0; i < nParams(); ++i)
+						params_[i] = params[names[i]];
+		}
+
+		inline Size ParametricModel::getIndex(const String& name) const
+		{
+				auto names = paramNames();
+				auto parNameIter = std::find(names.begin(), names.end(), name);
+				return std::distance(names.begin(), parNameIter);
+		}
+
+		inline Size ParametricModel::nParams() const
+		{
+				return paramNames().size();
+		}
+
+		inline std::vector<Real> ParametricModel::mapToParameterSpace(std::vector<Real> values) const
+		{
+				return values;
+		}
 }

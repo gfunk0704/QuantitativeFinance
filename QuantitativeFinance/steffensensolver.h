@@ -4,24 +4,24 @@
 
 namespace QuantitativeFinance
 {
-	class SteffensenSolver : public IterativeSolver<SteffensenSolver>
+	class SteffensenSolver : public IterativeSolver
 	{
 	public:
 		SteffensenSolver(Size maxIteration, Real tol);
 		SteffensenSolver();
 
-		Real evaluateG(const ScalarFunction1D f, Real x, Real fx);
+		Real g(const ScalarFunction1D f, Real x, Real fx) override;
 	};
 
 	inline SteffensenSolver::SteffensenSolver(Size maxIteration, Real tol):
-		IterativeSolver<SteffensenSolver>(maxIteration, tol)
+		IterativeSolver(maxIteration, tol)
 	{}
 
 	inline SteffensenSolver::SteffensenSolver():
-		IterativeSolver<SteffensenSolver>()
+		IterativeSolver()
 	{}
 
-	inline Real SteffensenSolver::evaluateG(const ScalarFunction1D f, Real x, Real fx)
+	inline Real SteffensenSolver::g(const ScalarFunction1D f, Real x, Real fx)
 	{
 		return (f(x + fx) - fx) / fx;
 	}
