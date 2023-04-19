@@ -20,7 +20,8 @@ namespace QuantitativeFinance
 				Thirty360(std::function<Day(Date&)> adjustDay)
 						:
 						adjustDay_(adjustDay)
-				{}
+				{
+				}
 
 				Real operator()(Date startDate, Date endDate)
 				{
@@ -37,13 +38,13 @@ namespace QuantitativeFinance
 		inline Day adjustDayEuropean(Date& d)
 		{
 				auto days = d.day();
-				return (days > 30)? 30 : days;
+				return (days > 30) ? 30 : days;
 		}
 
 		inline Day adjustDayItaly(Date& d)
 		{
 				auto days = d.day();
-				auto maxValue = (d.month() == Month::FEB)? 28: 30;
+				auto maxValue = (d.month() == Month::FEB) ? 28 : 30;
 				return (days > maxValue) ? 30 : days;
 		}
 

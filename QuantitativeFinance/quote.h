@@ -1,38 +1,46 @@
 #pragma once
 
-#include "observerpattern.h"
+#include "calendar.h"
+#include "observer.h"
 #include "valuedate.h"
 
 namespace QuantitativeFinance
 {
-		template<class Instrument>
-		class Quote
+
+		class Quote : public Observer
 		{
 		public:
-				Quote(Real value, SharedPtr<Instrument> instrument);
+				Quote(Real value, SharedPtr<Calendar> calendar);
+				SharedPtr<Calendar> calendar() const;
 				Real value() const;
-				virtual void setValue(Real value);
+				void setValue(Real value);
 				virtual Date expiryDate() const = 0;
+
 		protected:
 				Real value_;
-				SharedPtr<Instrument> instrument_;
+				SharedPtr<Calendar> calendar_;
 		};
 
-		template<class Instrument>
-		inline Quote<Instrument>::Quote(Real value, SharedPtr<Instrument> instrument)
+		inline Quote::Quote(Real value, SharedPtr<Calendar> calendar)
 				:
+				Observer(&ValueDate::getInstance()),
 				value_(value),
-				instrument_(instrument)
-		{}
+				calendar_(calendar)
+		{
+				update();
+		}
 
-		template<class Instrument>
-		inline Real Quote<Instrument>::value() const
+		inline SharedPtr<Calendar> Quote::calendar() const
+		{
+				return calendar_;
+		}
+
+		inline Real Quote::value() const
 		{
 				return value_;
 		}
 
-		template<class Instrument>
-		inline void Quote<Instrument>::setValue(Real value)
+		inline void Quote::setValue(Real value)
 		{
 				value_ = value;
 		}

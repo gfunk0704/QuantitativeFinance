@@ -20,12 +20,7 @@ namespace QuantitativeFinance
 
 		inline Observer::Observer(Observable* observable) :
 				observable_(observable)
-		{}
-
-		inline Observer::~Observer()
 		{
-				observable_->unregister(this);
-				delete observable_;
 		}
 
 		class Observable
@@ -41,15 +36,6 @@ namespace QuantitativeFinance
 				void notisfyAll();
 		};
 
-		inline Observable::~Observable()
-		{
-				if (!observers_.empty())
-				{
-						for (auto observer : observers_)
-								unregister(observer);
-				}
-		}
-
 		inline void Observable::rigister(Observer* observer)
 		{
 				observers_.insert(observer);
@@ -58,14 +44,5 @@ namespace QuantitativeFinance
 		inline void Observable::unregister(Observer* observer)
 		{
 				observers_.erase(observer);
-		}
-
-		inline void Observable::notisfyAll()
-		{
-				if (!observers_.empty())
-				{
-						for (auto observer : observers_)
-								observer->update();
-				}
 		}
 }

@@ -25,7 +25,8 @@ namespace QuantitativeFinance
 		inline InterestRateTermStructure::InterestRateTermStructure(DayCount dayCount)
 				:
 				dayCounter_(dayCount)
-		{}
+		{
+		}
 
 		inline Real InterestRateTermStructure::discountFactor(const Date& maturity) const
 		{

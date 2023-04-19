@@ -10,8 +10,8 @@
 
 namespace QuantitativeFinance
 {
-	template <typename T> 
-	inline Integer sign(T value) {
-		return (T(0) < value) - (value < T(0));
-	}
+		template <typename T>
+		inline Integer sign(T value) {
+				return (T(0) < value) - (value < T(0));
+		}
 }

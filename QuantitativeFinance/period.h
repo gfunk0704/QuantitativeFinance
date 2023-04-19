@@ -26,11 +26,12 @@ namespace QuantitativeFinance
 				static Period years(NumberType number);
 		};
 
-		inline Period::Period(NumberType number, TimeUnit unit) 
-		:
+		inline Period::Period(NumberType number, TimeUnit unit)
+				:
 				number_(number),
 				unit_(unit)
-		{}
+		{
+		}
 
 		inline Period::NumberType Period::number() const
 		{

@@ -3,34 +3,30 @@
 #include <set>
 
 #include "calendar.h"
+#include "currency.h"
 
 namespace QuantitativeFinance
 {
 		class CountryCalendar : public Calendar
 		{
-		protected:
-				std::function<bool(const Date&)> rule_;
-				std::set<Weekday> weekend_;
-				CountryCalendar(std::function<bool(const Date&)> rule,
-						std::set<Weekday> weekend = { Weekday::SAT, Weekday::SUN },
-						std::set<Date> addtionalHolidays = std::set<Date>());
 		public:
-				bool isHoliday(const Date& date) const override;
+				CountryCalendar(std::set<Date> addtionalHolidays = std::set<Date>());
+				bool isHoliday(Date& date) const override;
 				Date convertTenorToExpiryDate(Date origin, const Period& tenor) const override;
+				virtual bool isWeekend(Date& date) const;
+				virtual Currency countryCurrency() const = 0;
+				virtual bool isNationalHoliday(Date& date) const = 0;
 		};
 
-		inline CountryCalendar::CountryCalendar(std::function<bool(const Date&)> rule,
-				std::set<Weekday> weekend,
-				std::set<Date> addtionalHolidays)
+		inline CountryCalendar::CountryCalendar(std::set<Date> addtionalHolidays)
 				:
-				Calendar(addtionalHolidays),
-				rule_(rule), weekend_(weekend)
-		{}
-
-		inline bool CountryCalendar::isHoliday(const Date& date) const
+				Calendar(addtionalHolidays)
 		{
-				if (weekend_.find(date.weekday()) != weekend_.end())
-						return true;
-				return rule_(date) || Calendar::isHoliday(date);
+		}
+
+		inline bool CountryCalendar::isWeekend(Date& date) const
+		{
+				auto weekday = date.weekday();
+				return (weekday == Weekday::SUN) || (weekday == Weekday::SAT);
 		}
 }

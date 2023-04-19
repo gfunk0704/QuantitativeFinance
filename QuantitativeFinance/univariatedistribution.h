@@ -5,7 +5,7 @@
 namespace QuantitativeFinance
 {
 		template<typename T>
-		class UnivariateDistribution
+		class UnivariateDistribution : public ParametricModel
 		{
 		public:
 				virtual Real cdf(T x) const = 0;
@@ -13,6 +13,8 @@ namespace QuantitativeFinance
 				virtual T quantile(Real p) const = 0;
 				virtual Real mean() const = 0;
 				virtual Real var() const = 0;
+		protected:
+				UnivariateDistribution(Size nParam) : ParametricModel(nParam) {};
 		};
 
 		using ContinuousDistribution = UnivariateDistribution<Real>;

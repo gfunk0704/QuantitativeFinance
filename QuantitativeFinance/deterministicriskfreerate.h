@@ -2,32 +2,41 @@
 
 #include "interestratetermstructure.h"
 #include "interestratequote.h"
-#include "piecewiseconstant.h"
+
 
 namespace QuantitativeFinance
 {
 		class DeterministicRiskFreeRate : public InterestRateTermStructure
 		{
 		public:
-				DeterministicRiskFreeRate(SharedPtr<InterestRateQuote> marketQuotes,
-						DayCount dayCount,
-						SharedPtr<NonparametricCurve> curve = SharedPtr<NonparametricCurve>(new PiecewiseConstant()));
-				virtual Real discountFactor(Real maturity) const override;
-				virtual Real instForward(Real maturity) const override;
-				virtual Real zeroRate(Real maturity) const override;
-		private:
-				SharedPtr<NonparametricCurve> curve_;
-				void bootstrap(SharedPtr<InterestRateQuote> marketQuotes);
+				DeterministicRiskFreeRate(std::vector<SharedPtr<InterestRateQuote>> marketQuotes,
+						DayCount dayCount);
+				Real maxTime() const;
+				Real minTime() const;
+		protected:
+				std::vector<SharedPtr<InterestRateQuote>> marketQuotes_;
+				Real maxTime_;
+				Real minTime_;
+				
+				void setTime();
 		};
 
-		DeterministicRiskFreeRate::DeterministicRiskFreeRate(SharedPtr<InterestRateQuote> marketQuotes,
-				DayCount dayCount,
-				SharedPtr<NonparametricCurve> curve)
+		inline DeterministicRiskFreeRate::DeterministicRiskFreeRate(std::vector<SharedPtr<InterestRateQuote>> marketQuotes,
+				DayCount dayCount)
 				:
 				InterestRateTermStructure(dayCount),
-				curve_(curve)
+				marketQuotes_(marketQuotes)
 		{
-				curve_->clear();
-				bootstrap(marketQuotes);
+				setTime();
+		}
+
+		inline Real DeterministicRiskFreeRate::maxTime() const
+		{
+				return maxTime_;
+		}
+		
+		inline Real DeterministicRiskFreeRate::minTime() const
+		{
+				return minTime_;
 		}
 }

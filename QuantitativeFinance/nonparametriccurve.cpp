@@ -22,16 +22,5 @@ namespace QuantitativeFinance
 				return first;
 		}
 
-		Real NonparametricCurve::integral(Real x) const
-		{
-				if (x <= points_.front().first)
-						return points_.front().second * x;
-				else if (x >= points_.back().first)
-						return (cumulativeIntegration_.back() + points_.front().second * (x - points_.front().first));
-				else
-				{
-						Size rhsPos = firstGreaterEqual(x);
-						return integralPartition(x, rhsPos) + cumulativeIntegration_[rhsPos - 1];
-				}
-		}
+		
 }

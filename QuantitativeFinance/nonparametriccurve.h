@@ -18,9 +18,8 @@ namespace QuantitativeFinance
 				virtual Real integralPartition(Real x, Size pos) const = 0;
 		public:
 				NonparametricCurve();
-				void clear();
-				Real getY(Real x) const override;
-				Real integral(Real x) const override;
+				virtual void clear();
+				std::vector<Point2D> points() const;
 				virtual void pushBack(Point2D pt);
 				virtual void popBack();
 		};
@@ -37,14 +36,9 @@ namespace QuantitativeFinance
 				cumulativeIntegration_.clear();
 		}
 
-		Real NonparametricCurve::getY(Real x) const
+		inline 	std::vector<Point2D> NonparametricCurve::points() const
 		{
-				if (x <= points_.front().first)
-						return points_.front().second;
-				else if (x >= points_.back().first)
-						return points_.back().second;
-				else
-						return interpolate(x, firstGreaterEqual(x));
+				return points_;
 		}
 
 		inline void NonparametricCurve::pushBack(Point2D pt)

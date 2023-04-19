@@ -89,17 +89,20 @@ namespace QuantitativeFinance
 				:
 				serialNumber_(serialNumber),
 				updateYmd_(false)
-		{}
+		{
+		}
 
 		inline Date::Date()
 				:
 				Date(0)
-		{}
+		{
+		}
 
 		inline Date::Date(Year yyyy, std::uint_fast32_t mm, Day dd)
 				:
 				Date(yyyy, static_cast<Month>(mm), dd)
-		{}
+		{
+		}
 
 		inline Date Date::shiftYears(SerialType n)
 		{

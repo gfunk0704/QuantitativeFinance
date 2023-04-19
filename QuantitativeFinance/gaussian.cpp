@@ -1156,7 +1156,14 @@ namespace QuantitativeFinance
 			0.999999900524235
 		};
 
-		Real Gaussian::interpolateStandardGaussianCdf(Real z)
+		Real Gaussian::marsagliaCdf(Real z)
+		{
+				Real  s = z, t = 0, b = z, q = z * z, i = 1;
+				while (s != t) s = (t = s) + (b *= q / (i += 2));
+				return .5 + s * exp(-.5 * q - .91893853320467274178L);
+		}
+
+		static inline Real interpolateCdf(Real z)
 		{
 				if (z >= cdfMax)
 						return 1.0;
@@ -1165,7 +1172,33 @@ namespace QuantitativeFinance
 				return w * cdfP[i + 1] + (1.0 - w) * cdfP[i];
 		}
 
-		Real Gaussian::standardGaussianQuantile(Real p)
+		Real Gaussian::piecewiseLinearCdf(Real z)
+		{
+				return (z > 0.0) ?
+						interpolateCdf(z) :
+						(1.0 - interpolateCdf(-z));
+		}
+
+		static inline Real rationalApproximation(Real t)
+		{
+				// Abramowitz and Stegun formula 26.2.23.
+				// The absolute value of the error should be less than 4.5 e-4.
+				return t - ((0.010328 * t + 0.802853) * t + 2.515517) /
+						(((0.001308 * t + 0.189269) * t + 1.432788) * t + 1.0);
+
+		}
+
+		Real Gaussian::abramowitzStegunQuantile(Real p)
+		{
+				if (p < 0.5)
+						// F^-1(p) = - G^-1(p)
+						return -rationalApproximation(sqrt(-2.0 * log(p)));
+				else
+						// F^-1(p) = G^-1(1-p)
+						return rationalApproximation(sqrt(-2.0 * log(1 - p)));
+		}
+
+		Real Gaussian::voutierQuantile(Real p)
 		{
 				Real r, z;
 				if (p < 0.0465)
@@ -1185,5 +1218,37 @@ namespace QuantitativeFinance
 						z = q * (1.246899760652504 + (0.195740115269792 - 0.652871358365296 * r) / (r * r - 0.839293158122257 * r + 0.155331081623168));
 				}
 				return z;
+		}
+
+		void Gaussian::setCdf(CDFMethod method)
+		{
+				switch (method)
+				{
+				case QuantitativeFinance::Gaussian::CDFMethod::MARSAGLIA:
+						cdf_ = marsagliaCdf;
+						break;
+				case QuantitativeFinance::Gaussian::CDFMethod::PIECEWISE_LINEAR:
+						cdf_ = piecewiseLinearCdf;
+						break;
+				default:
+						throw std::runtime_error("unknown Gaussian CDF method found");
+				}
+				numericalMethods_.first = method;
+		}
+
+		void Gaussian::setQuantile(QuantileMethod method)
+		{
+				switch (method)
+				{
+				case QuantileMethod::ABRAMOWITZ_AND_STEGUN:
+						quantile_ = abramowitzStegunQuantile;
+						break;
+				case QuantileMethod::VOUTIER:
+						quantile_ = voutierQuantile;
+						break;
+				default:
+						throw std::runtime_error("unknown Gaussian quantile method found");
+				}
+				numericalMethods_.second = method;
 		}
 }

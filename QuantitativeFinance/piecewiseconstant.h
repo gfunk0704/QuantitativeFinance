@@ -8,6 +8,9 @@ namespace QuantitativeFinance
 		{
 		public:
 				PiecewiseConstant();
+				Real getY(Real x) const override;
+				Real integral(Real x) const override;
+				void pushBack(Point2D) override;
 		protected:
 				Real interpolate(Real x, Size rhsPos) const override;
 				Real integralPartition(Real x, Size rhsPos) const override;
@@ -16,7 +19,8 @@ namespace QuantitativeFinance
 		inline PiecewiseConstant::PiecewiseConstant()
 				:
 				NonparametricCurve()
-		{}
+		{
+		}
 
 		inline Real PiecewiseConstant::interpolate(Real x, Size rhsPos) const
 		{

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <set>
-#include "date.h"
+#include "valuedate.h"
 
 namespace QuantitativeFinance
 {
@@ -10,10 +10,12 @@ namespace QuantitativeFinance
 		public:
 				Calendar(std::set<Date> additionalHolidays = std::set<Date>());
 
-				bool isBusinessday(const Date& date) const;
+				bool isBusinessday(Date& date) const;
 				Date shiftNBusubessday(Date d, Size nDay, bool backward) const;
-				virtual bool isHoliday(const Date& date) const;
+				virtual bool isHoliday(Date& date) const;
 				virtual Date convertTenorToExpiryDate(Date origin, const Period& tenor) const = 0;
+				virtual Date spotDate(Date origin, Natural spotLag) const = 0;
+				Date spotDate(Natural spotLag) const;
 		protected:
 				std::set<Date> additionalHolidays_;
 		};
@@ -21,15 +23,22 @@ namespace QuantitativeFinance
 		inline Calendar::Calendar(std::set<Date> additionalHolidays)
 				:
 				additionalHolidays_(additionalHolidays)
-		{}
+		{
+		}
 
-		inline bool Calendar::isHoliday(const Date& date) const
+		inline bool Calendar::isHoliday(Date& date) const
 		{
 				return additionalHolidays_.find(date) != additionalHolidays_.end();
 		}
 
-		inline bool Calendar::isBusinessday(const Date& date) const
+		inline bool Calendar::isBusinessday(Date& date) const
 		{
 				return !isHoliday(date);
 		}
+
+		inline 	Date Calendar::spotDate(Natural spotLag) const
+		{
+				return spotDate(ValueDate::getInstance().get(), spotLag);
+		}
+
 }

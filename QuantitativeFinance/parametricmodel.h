@@ -18,16 +18,17 @@ namespace QuantitativeFinance
 				virtual std::vector<Real> paramLowerBound() const = 0;
 				virtual std::vector<Real> paramUpperBound() const = 0;
 		protected:
-				ParametricModel();
+				ParametricModel(Size nParam);
 				std::vector<Real> params_;
 				Size getIndex(const String& name) const;
 				void validility() const;
 				virtual std::vector<Real> mapToParameterSpace(std::vector<Real> values) const;
 		};
 
-		inline ParametricModel::ParametricModel()
+		inline ParametricModel::ParametricModel(Size nParam)
+		:
+		params_(nParam)
 		{
-				params_.resize(nParams());
 		}
 
 		inline Real ParametricModel::getParam(const String& name) const

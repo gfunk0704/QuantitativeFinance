@@ -30,7 +30,8 @@ namespace QuantitativeFinance
 				:
 				dayCount_(dayCount),
 				counter_(createCounter(dayCount))
-		{}
+		{
+		}
 
 		inline DayCount DayCounter::dayCount() const
 		{
