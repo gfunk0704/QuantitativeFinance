@@ -4,5 +4,8 @@
 
 namespace QuantitativeFinance
 {
+		class Optimization
+		{
 
+		};
 }
