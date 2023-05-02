@@ -5,6 +5,8 @@
 
 
 
+
+
 using namespace QuantitativeFinance;
 
 void demo()
