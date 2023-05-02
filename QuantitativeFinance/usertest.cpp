@@ -6,6 +6,8 @@
 https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzYxMDJjMmUtZWE1Yi00ZjIzLThhNzAtNjVkNTY2NGU2ZmU3%40thread.v2/0?context=%7b%22Tid%22%3a%22217a5a3d-163a-4e8b-af1b-58fd7f92894f%22%2c%22Oid%22%3a%2292da8f9d-e6b6-4ecd-887b-520033fbb69f%22%7d
 */
 
+
+
 using namespace QuantitativeFinance;
 
 void demo()
